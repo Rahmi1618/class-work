@@ -1,1 +1,3 @@
-# class-work
+name rahmi
+tsi
+ekru
