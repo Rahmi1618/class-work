@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediCare Pharmacy - Your Online Medicine Store</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header & Navigation -->
+    <header class="header">
+      <div class="container">
+        <nav class="navbar">
+          <div class="logo">
+            <i class="fas fa-prescription-bottle-alt"></i>
+            <h1>MediCare<span>Pharmacy</span></h1>
+          </div>
+          <ul class="nav-menu">
+            <li>
+              <a href="#home" class="nav-link active"
+                ><i class="fas fa-home"></i> Home</a
+              >
+            </li>
+            <li>
+              <a href="#medicines" class="nav-link"
+                ><i class="fas fa-pills"></i> Medicines</a
+              >
+            </li>
+            <li>
+              <a href="#prescription" class="nav-link"
+                ><i class="fas fa-file-medical"></i> Prescription</a
+              >
+            </li>
+            <li>
+              <a href="#cart" class="nav-link"
+                ><i class="fas fa-shopping-cart"></i> Cart
+                <span id="cart-count">0</span></a
+              >
+            </li>
+            <li>
+              <a href="#track" class="nav-link"
+                ><i class="fas fa-truck"></i> Track Order</a
+              >
+            </li>
+            <li class="dropdown">
+              <a href="#account" class="nav-link account-btn"
+                ><i class="fas fa-user-circle"></i> Account</a
+              >
+              <div class="dropdown-content">
+                <a href="#" id="login-btn"
+                  ><i class="fas fa-sign-in-alt"></i> Login</a
+                >
+                <a href="#" id="register-btn"
+                  ><i class="fas fa-user-plus"></i> Register</a
+                >
+                <a href="#"><i class="fas fa-history"></i> Order History</a>
+                <a href="#"><i class="fas fa-cog"></i> Settings</a>
+              </div>
+            </li>
+          </ul>
+          <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2><i class="fas fa-sign-in-alt"></i> User Login</h2>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="username"
+              ><i class="fas fa-user"></i> Email/Phone</label
+            >
+            <input
+              type="text"
+              id="username"
+              placeholder="Enter email or phone"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password"><i class="fas fa-lock"></i> Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn-login">Login</button>
+          </div>
+          <div class="form-footer">
+            <a href="#" id="forgot-password">Forgot Password?</a>
+            <p>
+              Don't have an account?
+              <a href="#" id="switch-to-register">Register</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div id="register-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2><i class="fas fa-user-plus"></i> Create Account</h2>
+        <form id="register-form">
+          <div class="form-group">
+            <label for="fullname"><i class="fas fa-user"></i> Full Name</label>
+            <input
+              type="text"
+              id="fullname"
+              placeholder="Enter full name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email"><i class="fas fa-envelope"></i> Email</label>
+            <input type="email" id="email" placeholder="Enter email" required />
+          </div>
+          <div class="form-group">
+            <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              placeholder="Enter phone number"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-password"
+              ><i class="fas fa-lock"></i> Password</label
+            >
+            <input
+              type="password"
+              id="reg-password"
+              placeholder="Create password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="confirm-password"
+              ><i class="fas fa-lock"></i> Confirm Password</label
+            >
+            <input
+              type="password"
+              id="confirm-password"
+              placeholder="Confirm password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn-register">Create Account</button>
+          </div>
+          <div class="form-footer">
+            <p>
+              Already have an account?
+              <a href="#" id="switch-to-login">Login</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section id="home" class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <h2>Your Health, Our Priority</h2>
+            <p>
+              Get medicines delivered to your doorstep with price comparison
+              across multiple pharmacies
+            </p>
+
+            <!-- Search Medicine -->
+            <div class="search-container">
+              <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input
+                  type="text"
+                  id="medicine-search"
+                  placeholder="Search medicines, healthcare products..."
+                />
+                <button class="search-btn">Search</button>
+              </div>
+              <div class="location-selector">
+                <i class="fas fa-map-marker-alt"></i>
+                <select id="location-select">
+                  <option value="">Select Location</option>
+                  <option value="addis">Addis Ababa</option>
+                  <option value="bahir">Bahir Dar</option>
+                  <option value="mekelle">Mekelle</option>
+                  <option value="awassa">Awassa</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="hero-features">
+              <div class="feature">
+                <i class="fas fa-clipboard-check"></i>
+                <h4>Prescription Upload</h4>
+              </div>
+              <div class="feature">
+                <i class="fas fa-money-bill-wave"></i>
+                <h4>Price Comparison</h4>
+              </div>
+              <div class="feature">
+                <i class="fas fa-shipping-fast"></i>
+                <h4>Fast Delivery</h4>
+              </div>
+              <div class="feature">
+                <i class="fas fa-robot"></i>
+                <h4>AI Assistance</h4>
+              </div>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img
+              src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+              alt="Pharmacy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Medicine Categories -->
+      <section class="categories">
+        <div class="container">
+          <h2 class="section-title">Medicine Categories</h2>
+          <div class="category-grid">
+            <div class="category-card">
+              <i class="fas fa-heart"></i>
+              <h3>Cardiac</h3>
+            </div>
+            <div class="category-card">
+              <i class="fas fa-brain"></i>
+              <h3>Neurology</h3>
+            </div>
+            <div class="category-card">
+              <i class="fas fa-allergies"></i>
+              <h3>Allergy</h3>
+            </div>
+            <div class="category-card">
+              <i class="fas fa-virus"></i>
+              <h3>Antibiotics</h3>
+            </div>
+            <div class="category-card">
+              <i class="fas fa-child"></i>
+              <h3>Pediatric</h3>
+            </div>
+            <div class="category-card">
+              <i class="fas fa-capsules"></i>
+              <h3>Supplements</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Medicines Section -->
+      <section id="medicines" class="medicines">
+        <div class="container">
+          <h2 class="section-title">Available Medicines</h2>
+          <div class="medicine-filter">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="low-price">
+              Lowest Price
+            </button>
+            <button class="filter-btn" data-filter="nearby">
+              Nearest Pharmacy
+            </button>
+            <button class="filter-btn" data-filter="prescription">
+              Prescription
+            </button>
+          </div>
+          <div class="medicine-grid" id="medicine-list">
+            <!-- Medicines will be populated by JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Prescription Upload Section -->
+      <section id="prescription" class="prescription">
+        <div class="container">
+          <h2 class="section-title">Upload Prescription</h2>
+          <div class="prescription-container">
+            <div class="prescription-box">
+              <i class="fas fa-file-upload"></i>
+              <h3>Upload Your Prescription</h3>
+              <p>Upload a clear image of your doctor's prescription</p>
+              <input
+                type="file"
+                id="prescription-file"
+                accept="image/*"
+                hidden
+              />
+              <button class="btn-upload" id="upload-btn">Choose File</button>
+              <p class="file-name" id="file-name">No file chosen</p>
+              <button class="btn-submit" id="submit-prescription">
+                Submit Prescription
+              </button>
+            </div>
+            <div class="prescription-info">
+              <h3>How it works?</h3>
+              <ul>
+                <li>
+                  <i class="fas fa-camera"></i> Take a clear photo of your
+                  prescription
+                </li>
+                <li><i class="fas fa-upload"></i> Upload the image</li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Our pharmacists will
+                  verify
+                </li>
+                <li>
+                  <i class="fas fa-shopping-cart"></i> Add medicines to cart
+                </li>
+                <li>
+                  <i class="fas fa-truck"></i> Get delivery at your doorstep
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Shopping Cart Section -->
+      <section id="cart" class="cart-section">
+        <div class="container">
+          <h2 class="section-title">Your Shopping Cart</h2>
+          <div class="cart-container">
+            <div class="cart-items">
+              <div class="cart-header">
+                <h3>Items (<span id="cart-items-count">0</span>)</h3>
+                <button class="clear-cart" id="clear-cart">Clear All</button>
+              </div>
+              <div class="cart-list" id="cart-list">
+                <!-- Cart items will be populated by JavaScript -->
+                <div class="empty-cart" id="empty-cart">
+                  <i class="fas fa-shopping-cart"></i>
+                  <h3>Your cart is empty</h3>
+                  <p>Add medicines to get started</p>
+                </div>
+              </div>
+            </div>
+            <div class="cart-summary">
+              <h3>Order Summary</h3>
+              <div class="summary-details">
+                <div class="summary-row">
+                  <span>Subtotal</span>
+                  <span id="subtotal">0.00 ETB</span>
+                </div>
+                <div class="summary-row">
+                  <span>Delivery Fee</span>
+                  <span id="delivery-fee">50.00 ETB</span>
+                </div>
+                <div class="summary-row total">
+                  <span>Total</span>
+                  <span id="total">50.00 ETB</span>
+                </div>
+              </div>
+              <button class="btn-checkout" id="checkout-btn">
+                Proceed to Checkout
+              </button>
+
+              <div class="payment-methods">
+                <h4>Payment Methods</h4>
+                <div class="payment-icons">
+                  <div class="payment-icon" data-method="telebirr">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>TeleBirr</span>
+                  </div>
+                  <div class="payment-icon" data-method="bank">
+                    <i class="fas fa-university"></i>
+                    <span>Bank Transfer</span>
+                  </div>
+                  <div class="payment-icon" data-method="cash">
+                    <i class="fas fa-money-bill"></i>
+                    <span>Cash on Delivery</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI Recommendation Section -->
+      <section class="ai-recommendation">
+        <div class="container">
+          <h2 class="section-title">AI Medicine Finder</h2>
+          <div class="ai-container">
+            <div class="ai-info">
+              <h3><i class="fas fa-robot"></i> Intelligent Medicine Search</h3>
+              <p>
+                Can't find your medicine? Our AI will search across multiple
+                pharmacies to find the best option for you.
+              </p>
+              <div class="ai-input">
+                <input
+                  type="text"
+                  id="ai-search"
+                  placeholder="Enter medicine name..."
+                />
+                <button class="ai-search-btn" id="ai-search-btn">
+                  <i class="fas fa-search"></i> Find with AI
+                </button>
+              </div>
+            </div>
+            <div class="ai-results" id="ai-results">
+              <h4>AI Recommendations will appear here</h4>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Real-time Chat -->
+      <div class="chat-widget">
+        <button class="chat-toggle" id="chat-toggle">
+          <i class="fas fa-comment-medical"></i>
+        </button>
+        <div class="chat-box" id="chat-box">
+          <div class="chat-header">
+            <h3><i class="fas fa-headset"></i> Pharmacy Support</h3>
+            <button class="close-chat">&times;</button>
+          </div>
+          <div class="chat-messages" id="chat-messages">
+            <div class="message received">
+              <p>
+                Hello! I'm your pharmacy assistant. How can I help you today?
+              </p>
+              <span class="time">10:00 AM</span>
+            </div>
+          </div>
+          <div class="chat-input">
+            <input
+              type="text"
+              id="chat-input"
+              placeholder="Type your message..."
+            />
+            <button id="send-chat"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="logo">
+              <i class="fas fa-prescription-bottle-alt"></i>
+              <h2>MediCare<span>Pharmacy</span></h2>
+            </div>
+            <p>
+              Your trusted online pharmacy with AI-powered medicine search and
+              delivery services.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#medicines">Medicines</a></li>
+              <li><a href="#prescription">Upload Prescription</a></li>
+              <li><a href="#cart">Cart</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-phone"></i> +251 902327220</p>
+            <p><i class="fas fa-envelope"></i> support rahmimuhe6@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> Kombolcha, Ethiopia</p>
+          </div>
+          <div class="footer-section">
+            <h3>Security Certified</h3>
+            <div class="security-badges">
+              <div class="badge"><i class="fas fa-lock"></i> SSL Secure</div>
+              <div class="badge">
+                <i class="fas fa-shield-alt"></i> HIPAA Compliant
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 MediCare Pharmacy. All rights reserved. | SRS Compliant
+            System
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+  </body>
+</html>
